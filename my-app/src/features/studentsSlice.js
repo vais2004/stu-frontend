@@ -131,7 +131,7 @@ const studentsSlice = createSlice({
       .addCase(deleteStudentAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.students = state.students.filter(
-          (student) => student._id !== Number(action.payload)
+          (student) => student._id !== action.payload
         );
       })
       .addCase(deleteStudentAsync.rejected, (state, action) => {
