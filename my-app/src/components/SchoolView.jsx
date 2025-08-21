@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateSchoolStats } from '../features/schoolSlice';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSchoolStats } from "../features/schoolSlice";
 
 export default function SchoolView() {
   const dispatch = useDispatch();
@@ -47,24 +47,25 @@ export default function SchoolView() {
   }, [students, dispatch]);
 
   if (!schoolStats) {
-    return <div>Loading school data...</div>;
+    return <div className="alert alert-primary" role="alert">Loading school data...</div>;
   }
 
   return (
     <div className="container py-3">
       <h2>School View</h2>
+      <hr/>
       <p>
         <b>Total Students:</b> {schoolStats.totalStudents}
       </p>
       <p>
-        <b>Average Attendance:</b>{' '}
-        {schoolStats.averageAttendance?.toFixed(2) || '0.00'}%
+        <b>Average Attendance:</b>{" "}
+        {schoolStats.averageAttendance?.toFixed(2) || "0.00"}%
       </p>
       <p>
-        <b>Average Marks:</b> {schoolStats.averageMarks?.toFixed(2) || '0.00'}
+        <b>Average Marks:</b> {schoolStats.averageMarks?.toFixed(2) || "0.00"}
       </p>
       <p>
-        <b>Top Student:</b> {schoolStats.topStudent?.name || '-'}
+        <b>Top Student:</b> {schoolStats.topStudent?.name || "-"}
       </p>
     </div>
   );

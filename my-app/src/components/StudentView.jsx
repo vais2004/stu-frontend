@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-//import { fetchStudents } from './features/studentsSlice';
-// import StudentList from './components/StudentList';
-import StudentList from './StudentList';
-import { fetchStudents } from '../features/studentsSlice';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import StudentList from "./StudentList";
+import { fetchStudents } from "../features/studentsSlice";
 
 const StudentView = () => {
   const dispatch = useDispatch();
@@ -15,7 +13,7 @@ const StudentView = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="alert alert-primary" role="alert">Loading...</p>;
   }
   if (error) {
     return <p>Error: {error}</p>;

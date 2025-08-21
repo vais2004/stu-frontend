@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const schoolSlice = createSlice({
-  name: 'school',
+  name: "school",
   initialState: {
     totalStudents: 0,
     averageAttendance: 0,

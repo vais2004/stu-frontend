@@ -1,70 +1,70 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = 'https://stu-backend-six.vercel.app/students';
+const API_URL = "https://stu-backend-six.vercel.app/students";
 
 export const fetchStudents = createAsyncThunk(
-  'students/fetchStudents',
+  "students/fetchStudents",
   async () => {
     const response = await fetch(API_URL);
     if (!response.ok) {
-      throw new Error('Failed to fetch students');
+      throw new Error("Failed to fetch students");
     }
     return await response.json();
   }
 );
 
 export const addStudentAsync = createAsyncThunk(
-  'students/addStudent',
+  "students/addStudent",
   async (newStudent) => {
     const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newStudent),
     });
     if (!response.ok) {
-      throw new Error('Failed to add student');
+      throw new Error("Failed to add student");
     }
     return await response.json();
   }
 );
 
 export const updateStudentAsync = createAsyncThunk(
-  'students/updateStudent',
+  "students/updateStudent",
   async ({ id, updatedData }) => {
     const response = await fetch(`${API_URL}/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
     });
 
     if (!response.ok) {
-      throw new Error('failed to update student');
+      throw new Error("failed to update student");
     }
     return await response.json();
   }
 );
 
 export const deleteStudentAsync = createAsyncThunk(
-  'students/deleteStudent',
+  "students/deleteStudent",
   async (id) => {
     const response = await fetch(`${API_URL}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     if (!response.ok) {
-      throw new Error('Failed to delete student');
+      throw new Error("Failed to delete student");
     }
     return id;
   }
 );
 
 const studentsSlice = createSlice({
-  name: 'students',
+  name: "students",
   initialState: {
     students: [],
     loading: false,
     error: null,
-    filter: 'All',
-    sortBy: 'Name',
+    filter: "All",
+    sortBy: "Name",
   },
   reducers: {
     setFilter: (state, action) => {
